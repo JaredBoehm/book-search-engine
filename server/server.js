@@ -25,9 +25,7 @@ const startApolloServer = async () => {
         context: authMiddleware
     }))
 
-    // if we're in production, serve client/build as static assets
-    app.use(express.static(path.join(__dirname, '../client/build')))
-
+    app.use(express.static(path.join(__dirname, '../client/dist')))
 
     db.once('open', () => {
         app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`))
