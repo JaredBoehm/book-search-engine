@@ -12,7 +12,10 @@ import { removeBookId } from '../utils/localStorage'
 import { useQuery, useMutation } from '@apollo/client'
 import { REMOVE_BOOK } from '../utils/mutations'
 import { QUERY_ME } from '../utils/queries'
+import { saveBookIds, getSavedBookIds } from '../utils/localStorage'
+import { get } from '../../../server/models/Book'
 
+// ISSUE: Saved books page requires a refresh to show data updated by the search page
 const SavedBooks = () => {
 
     const { loading, data } = useQuery(QUERY_ME)
@@ -43,6 +46,10 @@ const SavedBooks = () => {
     // if data isn't here yet, say so
     if (loading) {
         return <h2>LOADING...</h2>
+    }
+
+    if (getSavedBookIds().length !== data.me.savedBooks.length) {
+        window.location.reload()
     }
 
     return (
