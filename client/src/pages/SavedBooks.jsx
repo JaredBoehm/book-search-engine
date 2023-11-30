@@ -15,7 +15,7 @@ import { QUERY_ME } from '../utils/queries'
 
 const SavedBooks = () => {
     
-    const { loading, data: userData } = useQuery(QUERY_ME)
+    const { loading, data } = useQuery(QUERY_ME)
 
     const [removeBook, { error }] = useMutation(REMOVE_BOOK)
 
@@ -44,7 +44,7 @@ const SavedBooks = () => {
         return <h2>LOADING...</h2>
     }
 
-    console.log(userData)
+    console.log(data)
 
     return (
         <>
@@ -55,12 +55,12 @@ const SavedBooks = () => {
             </div>
             <Container>
                 <h2 className='pt-5'>
-                    {userData.savedBooks.length
-                        ? `Viewing ${userData.savedBooks.length} saved ${userData.savedBooks.length === 1 ? 'book' : 'books'}:`
+                    {data.me.savedBooks.length
+                        ? `Viewing ${data.me.savedBooks.length} saved ${data.me.savedBooks.length === 1 ? 'book' : 'books'}:`
                         : 'You have no saved books!'}
                 </h2>
                 <Row>
-                    {userData.savedBooks.map((book) => {
+                    {data.me.savedBooks.map((book) => {
                         return (
                             <Col md="4">
                                 <Card key={book.bookId} border='dark'>
