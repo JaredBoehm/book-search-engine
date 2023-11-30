@@ -47,7 +47,7 @@ const SavedBooks = () => {
         return <h2>LOADING...</h2>
     }
 
-    if (getSavedBookIds().length !== data.me.savedBooks.length) {
+    if (getSavedBookIds().length !== data.me.savedBooks.length && typeof data.me.savedBooks.length === 'number') {
         window.location.reload()
     }
 
