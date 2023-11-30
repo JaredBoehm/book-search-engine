@@ -14,9 +14,8 @@ import { REMOVE_BOOK } from '../utils/mutations'
 import { QUERY_ME } from '../utils/queries'
 
 const SavedBooks = () => {
-    
+
     const { loading, data } = useQuery(QUERY_ME)
-    const { userBooks, setUserBooks } = useState(data.me.savedBooks) 
 
     const [removeBook, { error }] = useMutation(REMOVE_BOOK)
 
@@ -35,7 +34,7 @@ const SavedBooks = () => {
 
             // upon success, remove book's id from localStorage
             removeBookId(bookId)
-            setUserBooks(userBooks.filter((book) => book.bookId !== bookId))
+            window.location.reload()
         } catch (err) {
             console.error(err)
         }
