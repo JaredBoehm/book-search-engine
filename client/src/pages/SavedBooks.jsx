@@ -13,7 +13,6 @@ import { useQuery, useMutation } from '@apollo/client'
 import { REMOVE_BOOK } from '../utils/mutations'
 import { QUERY_ME } from '../utils/queries'
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage'
-import { get } from '../../../server/models/Book'
 
 // ISSUE: Saved books page requires a refresh to show data updated by the search page
 const SavedBooks = () => {
