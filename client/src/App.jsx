@@ -24,6 +24,10 @@ const client = new ApolloClient({
     cache: new InMemoryCache(),
 })
 
+useEffect(() => {
+    window.location.reload()
+}, [location.pathname])
+
 function App() {
     return (
         <ApolloProvider client={client}>
